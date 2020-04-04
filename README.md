@@ -252,7 +252,7 @@
 |244| [What is NoopZone?](#what-is-noopzone)|
 |245| [How do you create displayBlock components?](#how-do-you-create-displayblock-components)|
 |246| [What are the possible data change scenarios for change detection?](#what-are-the-possible-data-change-scenarios-for-change-detection)|
-|247| [?](#)|
+|247| [What is a zone context?](#what-is-a-zone-context)|
 |248| [?](#)|
 |249| [?](#)|
 |250| [?](#)|
@@ -3644,8 +3644,19 @@
 
      **[⬆ Back to Top](#table-of-contents)**
 
-247. ### ?
-
+247. ### What is a zone context?
+      Execution Context is an abstract concept that holds information about the environment within the current code being executed. A zone provides an execution context that persists across asynchronous operations is called as zone context. For example, the zone context will be same in both outside and inside setTimeout callback function,
+      ```js
+      zone.run(() => {
+        // outside zone
+        expect(zoneThis).toBe(zone);
+        setTimeout(function() {
+          // the same outside zone exist here
+          expect(zoneThis).toBe(zone);
+        });
+      });
+      ```
+      The current zone is retrieved through `Zone.current`.
      **[⬆ Back to Top](#table-of-contents)**
 
 248. ### ?
